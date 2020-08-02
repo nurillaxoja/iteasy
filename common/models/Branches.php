@@ -34,7 +34,7 @@ class Branches extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['created_at'], 'safe'],
+            [['created_at','status'], 'safe'],
             [['company_id', 'department_id'], 'integer'],
             [['status'], 'string'],
             [['name', 'address'], 'string', 'max' => 255],
