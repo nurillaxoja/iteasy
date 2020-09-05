@@ -63,7 +63,7 @@ class Departments extends \yii\db\ActiveRecord
      */
     public function getBranches()
     {
-        return $this->hasMany(Branches::className(), ['department_id' => 'id']);
+        return $this->hasMany(Branches::className(), ['id' => 'branch_id']);
     }
 
     /**

@@ -9,6 +9,7 @@ use yii\grid\GridView;
 
 $this->title = 'Departments';
 $this->params['breadcrumbs'][] = $this->title;
+
 ?>
 <div class="departments-index">
 
@@ -38,9 +39,11 @@ $this->params['breadcrumbs'][] = $this->title;
             [
                 'label' => 'Branch name',
                 'attribute' => 'branch_id',
-                'value' => 'branches.name'
-
+                'value' => function($model){
+                    return implode(\yii\helpers\ArrayHelper::map($model->branches, 'branch_id', 'name'));
+                }
             ],
+
             'created_at',
             'status',
 

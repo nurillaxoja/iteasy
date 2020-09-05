@@ -2,6 +2,7 @@
 
 namespace backend\models\search;
 
+use common\models\Branches;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
 use common\models\Departments;
@@ -18,7 +19,7 @@ class DepartmentsSearch extends Departments
     {
         return [
             [['id', 'company_id'], 'integer'],
-            [['name', 'created_at', 'status'], 'safe'],
+            [['name', 'created_at', 'status', 'branch_id'], 'safe'],
         ];
     }
 
@@ -48,6 +49,7 @@ class DepartmentsSearch extends Departments
             'query' => $query,
         ]);
 
+        $query->joinWith('branches');
         $this->load($params);
 
         if (!$this->validate()) {
@@ -64,6 +66,7 @@ class DepartmentsSearch extends Departments
         ]);
 
         $query->andFilterWhere(['like', 'name', $this->name])
+            ->andFilterWhere(['like', 'branches.name', $this->branch_id])
             ->andFilterWhere(['like', 'status', $this->status]);
 
         return $dataProvider;

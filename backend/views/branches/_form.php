@@ -21,11 +21,15 @@ use yii\widgets\ActiveForm;
             ['prompt' => 'Select Company']
         ) ?>
 
-    <?= $form->field($model, 'department_id')->dropDownList(
-        ArrayHelper::map(Departments::find()->all(),'id','name'),
-        ['prompt' => 'Select department']
-
-    )?>
+    <?= 
+        $form->field($model, 'department_id')->widget(\kartik\select2\Select2::classname(), [
+            'data' => \yii\helpers\ArrayHelper::map(Departments::find()->all(), 'id', 'name'),
+            'options' => ['placeholder' => 'Tanlang', 'multiple' => false, 'required' => true],
+            'theme' => \kartik\select2\Select2::THEME_KRAJEE,
+            'size' => 'xs',
+        ]);
+        
+    ?>
 
     <?= $form->field($model, 'name')->textInput(['maxlength' => true]) ?>
 
