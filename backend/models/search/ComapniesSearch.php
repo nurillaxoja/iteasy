@@ -4,10 +4,10 @@ namespace backend\models\search;
 
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use common\models\Companies;
+use backend\modules\settings\model\Companies;
 
 /**
- * ComapniesSearch represents the model behind the search form of `common\models\Companies`.
+ * ComapniesSearch represents the model behind the search form of `backend\modules\settings\model\Companies`.
  */
 class ComapniesSearch extends Companies
 {
@@ -18,7 +18,7 @@ class ComapniesSearch extends Companies
     {
         return [
             [['id'], 'integer'],
-            [['name', 'email', 'address', 'created_at', 'status'], 'safe'],
+            [['name', 'email', 'address', 'company_start_date', 'created_at', 'status'], 'safe'],
         ];
     }
 
@@ -59,6 +59,7 @@ class ComapniesSearch extends Companies
         // grid filtering conditions
         $query->andFilterWhere([
             'id' => $this->id,
+            'company_start_date' => $this->company_start_date,
             'created_at' => $this->created_at,
         ]);
 

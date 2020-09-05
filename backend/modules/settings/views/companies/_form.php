@@ -2,6 +2,8 @@
 
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
+use dosamigos\datepicker\DatePicker;
+
 
 /* @var $this yii\web\View */
 /* @var $model backend\modules\settings\model\Companies */
@@ -18,6 +20,17 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'address')->textInput(['maxlength' => true]) ?>
 
+    <!-- <?= $form->field($model, 'company_start_date')->textInput() ?> -->
+
+    <?=
+    $form->field($model, 'company_start_date')->widget(\kartik\date\DatePicker::classname(), [
+        'pluginOptions' => [
+            'autoclose' => true,
+            'format' => 'yyyy-mm-dd',
+            'todayHighlight' => true
+        ]
+    ]);
+    ?>
     <?= $form->field($model, 'created_at')->textInput() ?>
 
     <?= $form->field($model, 'status')->dropDownList([ 'active' => 'Active', 'inactive' => 'Inactive', ], ['prompt' => '']) ?>

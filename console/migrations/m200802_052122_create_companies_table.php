@@ -17,9 +17,11 @@ class m200802_052122_create_companies_table extends Migration
             'name'=> $this->string(),
             'email' => $this->string(),
             'address' => $this->string(),
+            'company_start_date' => $this->date(),
             'created_at' => $this->dateTime(),
             // 'status' => $this->boolean()->defaultValue(false)
             'status' => "ENUM('active','inactive')",
+
         ]);
 
     }
