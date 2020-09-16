@@ -1,5 +1,6 @@
 <?php
 
+use kartik\date\DatePicker;
 use yii\helpers\Html;
 use yii\grid\GridView;
 
@@ -30,7 +31,23 @@ $this->params['breadcrumbs'][] = $this->title;
             'name',
             'email:email',
             'address',
-            'company_start_date',
+            // 'company_start_date',
+            [
+                'attribute' => 'company_start_date',
+                'value' => 'company_start_date',
+                'format' => 'raw',
+                'filter' => DatePicker::widget([
+                    'model' => $searchModel,
+                    'attribute' => 'company_start_date',
+                    // 'value' => 'company_start_date',
+                    'pluginOptions' => [
+                        'format' => 'yyyy-mm-dd',
+                        'multidate' => false,
+                        'autoclose' => true
+                    ]
+                ]),
+                
+            ],
             //'created_at',
             //'status',
 

@@ -34,6 +34,7 @@ class Companies extends \yii\db\ActiveRecord
     {
         return [
             [['created_at'], 'safe'],
+            [['company_start_date'], 'required'],
             [['status'], 'string'],
             [['name', 'email', 'address'], 'string', 'max' => 255],
         ];
@@ -51,6 +52,7 @@ class Companies extends \yii\db\ActiveRecord
             'address' => 'Address',
             'created_at' => 'Created At',
             'status' => 'Status',
+            'company_start_date' => 'Company start date'
         ];
     }
 

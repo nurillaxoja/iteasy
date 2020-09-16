@@ -2,7 +2,6 @@
 
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
-use dosamigos\datepicker\DatePicker;
 
 
 /* @var $this yii\web\View */
@@ -31,7 +30,6 @@ use dosamigos\datepicker\DatePicker;
         ]
     ]);
     ?>
-    <?= $form->field($model, 'created_at')->textInput() ?>
 
     <?= $form->field($model, 'status')->dropDownList([ 'active' => 'Active', 'inactive' => 'Inactive', ], ['prompt' => '']) ?>
 
