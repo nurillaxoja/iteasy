@@ -39,6 +39,8 @@ use yii\widgets\ActiveForm;
     
     <?= $form->field($model, 'status')->dropDownList([ 'active' => 'Active', 'inactive' => 'Inactive', ], ['prompt' => 'Status']) ?>
 
+    <?= $form->field($model , 'file')->fileInput() ?>
+
     <div class="form-group">
         <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>
     </div>

@@ -4,6 +4,8 @@ namespace common\models;
 
 use Yii;
 
+use function PHPSTORM_META\map;
+
 /**
  * This is the model class for table "{{%companies}}".
  *
@@ -26,7 +28,7 @@ class Companies extends \yii\db\ActiveRecord
     {
         return '{{%companies}}';
     }
-
+    public $file;
     /**
      * {@inheritdoc}
      */
@@ -36,6 +38,8 @@ class Companies extends \yii\db\ActiveRecord
             [['created_at'], 'safe'],
             [['company_start_date'], 'required'],
             [['status'], 'string'],
+            [['file'], 'file'],
+            [['logo'], 'string' , 'max'=> 200],
             [['name', 'email', 'address'], 'string', 'max' => 255],
         ];
     }
@@ -52,7 +56,10 @@ class Companies extends \yii\db\ActiveRecord
             'address' => 'Address',
             'created_at' => 'Created At',
             'status' => 'Status',
-            'company_start_date' => 'Company start date'
+            'company_start_date' => 'Company start date',
+            'file' => 'Insert file',
+            'logo' => 'Logo image'
+
         ];
     }
 
