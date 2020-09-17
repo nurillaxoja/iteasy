@@ -8,6 +8,7 @@ use backend\models\search\DepartmentsSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use yii\web\ForbiddenHttpException;
 
 /**
  * DepartmentsController implements the CRUD actions for Departments model.
@@ -64,6 +65,8 @@ class DepartmentsController extends Controller
      */
     public function actionCreate()
     {
+        if(Yii::$app->user->can('create-departments')){
+            
         $model = new Departments();
 
         if ($model->load(Yii::$app->request->post())) {
@@ -75,6 +78,9 @@ class DepartmentsController extends Controller
         return $this->render('create', [
             'model' => $model,
         ]);
+        }else{
+            throw new ForbiddenHttpException();
+        }
     }
 
     /**
