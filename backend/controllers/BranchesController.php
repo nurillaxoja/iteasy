@@ -117,6 +117,24 @@ class BranchesController extends Controller
         return $this->redirect(['index']);
     }
 
+    public function actionLists($id){
+        $countBranches = Branches::find()
+        ->where(['id' => $id])
+        ->count();
+         
+        $branches = Branches::find()
+        ->where(['id' => $id])
+        ->all();
+
+        if($countBranches > 0){
+            foreach($branches as $branch){
+                echo "<option value='".$branch->id."'>".$branch->name."</option>";
+            }
+        }else{
+            echo "<option> - </option>";
+        }
+    }
+
     /**
      * Finds the Branches model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
